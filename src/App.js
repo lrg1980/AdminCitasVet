@@ -4,6 +4,21 @@ import Header from './componentes/Header';
 
 
 class App extends Component {
+  
+  state = {
+    citas : []
+  }
+  crearCita = (nuevaCita) => {
+    //console.log(cita)
+    const citas = [...this.state.citas, nuevaCita];
+    
+    console.log(citas);
+
+    this.setState({
+      citas
+    });
+  }
+  
   render() {
     return (
       <div className="container">
@@ -11,7 +26,9 @@ class App extends Component {
           titulo={'Administrador de visitas de Mascotas'} />
         <div className="row">
           <div className="col-md-6">
-            <AgregarCita />
+            <AgregarCita
+              crearCita={this.crearCita}
+            />
             
           </div>
         </div>
