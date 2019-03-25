@@ -16,7 +16,13 @@ class ListaCitas extends Component {
                               {mensaje}
                          </h2>
                          <div className="lista-citas">
-                              <Cita />
+                              {Object.keys(this.props.citas).map(cita => (
+                                   <Cita
+                                        key={cita}
+                                        info={this.props.citas[cita]}
+                                        
+                                   />
+                              ))}
                          </div>
                     </div>
                </div>
