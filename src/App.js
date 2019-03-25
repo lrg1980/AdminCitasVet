@@ -4,17 +4,34 @@ import Header from './componentes/Header';
 import ListaCitas from './componentes/ListaCitas';
 
 
+
 class App extends Component {
   
   state = {
     citas : []
   }
+
   crearCita = (nuevaCita) => {
     //console.log(cita)
     const citas = [...this.state.citas, nuevaCita];
     
     console.log(citas);
 
+    this.setState({
+      citas
+    });
+  }
+
+  borrarCita = id => {
+
+    console.log(id);
+    // Obtener copia del state
+    const citasActuales = [...this.state.citas];
+
+    // borrar el elemento del state
+    const citas = citasActuales.filter(cita => cita.id !== id);
+
+    // Actualizar el state
     this.setState({
       citas
     });
@@ -34,7 +51,8 @@ class App extends Component {
           </div>
           <div className="col-md-6">
             <ListaCitas
-              citas={this.state.citas} />
+              citas={this.state.citas}
+              borrarCita={this.borrarCita}/>
           </div>
         </div>
       </div>

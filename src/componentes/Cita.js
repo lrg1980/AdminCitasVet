@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 
 class Cita extends Component {
    
+     eliminarCita = () => {
+          this.props.borrarCita( this.props.info.id);
+     }
+     
+     
      render() {
-          const { fecha, hora, mascota, propietario, sintomas, id } = this.props.info;
+          const {fecha, hora, mascota, propietario, sintomas } = this.props.info;
 
           return (
                <div className="media mt-3">
@@ -33,8 +38,8 @@ class Cita extends Component {
                              {sintomas}
                          </p>
 
-                         <button>
-                              
+                         <button onClick={ this.eliminarCita } className="btn btn-danger text-center">
+                              Eliminar &times;
                          </button>
                     </div>
                </div>
